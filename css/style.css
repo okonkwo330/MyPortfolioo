@@ -304,3 +304,40 @@ footer {
   .hero h1 { font-size: 1.9rem; }
   .task-item { flex-wrap: wrap; }
 } 
+/* ================= 9. MOBILE NAVIGATION FIX ================= */
+@media (max-width: 768px) {
+  /* Show the hamburger button */
+  .menu-btn { 
+    display: block; 
+  }
+
+  /* Hide the links and stack them vertically */
+  .nav-links {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--blue);
+    position: absolute; /* Drops down like a proper mobile menu */
+    top: 60px; /* Sits right below the header */
+    left: 0;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    gap: 15px;
+  }
+
+  /* This class is added by JavaScript when you click the ☰ button */
+  .nav-links.show { 
+    display: flex; 
+  }
+
+  /* Make the hero section stack instead of being side-by-side */
+  .hero { 
+    flex-direction: column; 
+    text-align: center; 
+  }
+  
+  .hero h1 { 
+    font-size: 26px; 
+  }
+}
