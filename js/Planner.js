@@ -1,7 +1,7 @@
 /* ========= ACADEMIC PLANNER ========= */
 
 // This ARRAY stores every task as an object: { name, priority, done }
-alert('Planner.js loaded');
+
 
 // ---- State ----
 let tasks = JSON.parse(localStorage.getItem('cos106-tasks')) || [];
