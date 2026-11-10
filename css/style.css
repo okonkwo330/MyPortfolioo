@@ -291,27 +291,56 @@ footer {
 }
 
 /* ===== Responsive ===== */
+/* ================= MOBILE NAVIGATION FIX ================= */
 @media (max-width: 768px) {
-  .nav-toggle { display: block; }
-  .nav-links {
-    position: absolute; top: 100%; left: 0; right: 0;
-    background: var(--primary); flex-direction: column;
-    padding: 1rem; gap: 1rem;
-    max-height: 0; overflow: hidden; transition: max-height .35s ease;
-  }
-  .nav-links.open { max-height: 400px; }
-  .hero { grid-template-columns: 1fr; text-align: center; }
-  .hero h1 { font-size: 1.9rem; }
-  .task-item { flex-wrap: wrap; }
-} 
-/* ================= 9. MOBILE NAVIGATION FIX ================= */
-@media (max-width: 768px) {
-  /* Show the hamburger button */
-  .menu-btn { 
-    display: block; 
+  
+  /* 1. Anchor the navbar so the dropdown sits right below it */
+  .navbar {
+    position: relative;
+    flex-wrap: wrap;
   }
 
-  /* Hide the links and stack them vertically */
+  /* 2. Show the hamburger button */
+  .menu-btn {
+    display: block;
+  }
+
+  /* 3. Hide the menu by default */
+  .nav-links {
+    display: none; 
+    flex-direction: column;
+    width: 100%;
+    background-color: #1e3a8a; /* Hardcoded blue so it doesn't fail */
+    position: absolute;
+    top: 100%; /* Drops it exactly below the blue header */
+    left: 0;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    gap: 15px;
+    z-index: 999; /* Keeps it on top of the photo */
+  }
+
+  /* 4. Show the menu when JavaScript adds the "show" class */
+  .nav-links.show {
+    display: flex;
+  }
+
+  /* 5. Force the links to be white so they don't disappear */
+  .nav-links a {
+    color: #ffffff; 
+    display: block;
+    padding: 10px;
+    font-size: 18px;
+  }
+
+  /* 6. Stack the hero image and text */
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+/* ================= 9. MOBILE NAVIGATION FIX ================= */
   .nav-links {
     display: none; /* Hidden by default */
     flex-direction: column;
