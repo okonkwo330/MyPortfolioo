@@ -1,9 +1,9 @@
 /* ================= 1. COLOURS AND BASIC SETUP ================= */
 :root {
-  --blue: #1e3a8a;      /* main colour */
-  --gold: #f59e0b;      /* accent colour */
-  --light: #f4f6f9;     /* page background */
-  --dark: #222;         /* text colour */
+  --blue: #1e3a8a;
+  --gold: #f59e0b;
+  --light: #f4f6f9;
+  --dark: #222;
   --white: #fff;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -17,30 +17,36 @@ body {
 img { max-width: 100%; display: block; }
 a { color: var(--blue); }
 
-/* ================= 2. NAVIGATION (Flexbox) ================= */
+/* ================= 2. NAVIGATION (DESKTOP) ================= */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: var(--blue);
   padding: 15px 20px;
-  position: sticky;   /* stays at the top when scrolling */
+  position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 1000;
 }
 .logo { color: var(--white); font-weight: bold; font-size: 20px; text-decoration: none; }
 
-.nav-links { display: flex; gap: 20px; list-style: none; }
+/* Desktop Menu */
+.nav-links { 
+  display: flex; 
+  gap: 20px; 
+  list-style: none; 
+}
 .nav-links a {
   color: #dbe4ff;
   text-decoration: none;
   padding-bottom: 3px;
   border-bottom: 2px solid transparent;
-  transition: color .3s, border-color .3s;   /* ANIMATION */
+  transition: color .3s, border-color .3s;
 }
 .nav-links a:hover,
 .nav-links a.active { color: var(--white); border-bottom-color: var(--gold); }
 
+/* Hide hamburger on desktop */
 .menu-btn { display: none; background: none; border: 0; color: var(--white); font-size: 24px; cursor: pointer; }
 
 /* ================= 3. PAGE LAYOUT ================= */
@@ -59,7 +65,7 @@ h2.title {
   padding: 20px;
   margin-bottom: 20px;
   box-shadow: 0 2px 8px rgba(0,0,0,.08);
-  transition: transform .3s;      /* ANIMATION */
+  transition: transform .3s;
 }
 .card:hover { transform: translateY(-5px); }
 
@@ -67,7 +73,7 @@ h2.title {
 .hero { display: flex; gap: 30px; align-items: center; flex-wrap: wrap; padding-top: 20px; }
 .hero img {
   width: 200px; height: 200px;
-  border-radius: 50%;            /* circle photo */
+  border-radius: 50%;
   object-fit: cover;
   border: 5px solid var(--gold);
 }
@@ -131,242 +137,60 @@ label { font-weight: bold; display: block; margin-bottom: 4px; }
   box-shadow: 0 2px 5px rgba(0,0,0,.07);
 }
 .task .text { flex: 1; }
-.task.done .text { text-decoration: line-through; color: #999; }  /* completed task */
+.task.done .text { text-decoration: line-through; color: #999; }
 .task input[type="checkbox"] { width: auto; }
 
-/* ================= 9. MOBILE (RESPONSIVE) ================= */
-@media (max-width: 700px) {
-  .navbar { flex-wrap: wrap; }
-  .menu-btn { display: block; }
-  .nav-links {
-    display: none;          /* hidden until the ☰ button is clicked */
-    width: 100%;
-    flex-direction: column;
-    gap: 10px;
-    padding-top: 15px;
-  }
-  .nav-links.show { display: flex; }
-  .hero { flex-direction: column; text-align: center; }
-  .hero h1 { font-size: 26px; }
-}
-/* ===== Variables & Reset ===== */
-:root {
-  --primary: #1e3a8a;
-  --accent: #f59e0b;
-  --bg: #f8fafc;
-  --text: #1f2937;
-  --card: #ffffff;
-  --radius: 12px;
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  font-family: system-ui, "Segoe UI", Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-}
-img { max-width: 100%; display: block; }
-a { color: var(--primary); }
-
-/* ===== Header & Navigation ===== */
-header {
-  background: var(--primary);
-  position: sticky; top: 0; z-index: 100;
-  box-shadow: 0 2px 8px rgba(0,0,0,.15);
-}
-.nav {
-  max-width: 1100px; margin: auto;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 1rem;
-}
-.logo { color: #fff; font-weight: 700; font-size: 1.2rem; text-decoration: none; }
-.nav-links {
-  list-style: none; display: flex; gap: 1.5rem;
-}
-.nav-links a {
-  color: #e0e7ff; text-decoration: none; font-weight: 500;
-  padding: .4rem 0; position: relative; transition: color .3s;
-}
-.nav-links a::after {
-  content: ""; position: absolute; left: 0; bottom: 0;
-  width: 0; height: 2px; background: var(--accent);
-  transition: width .3s;
-}
-.nav-links a:hover, .nav-links a.active { color: #fff; }
-.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
-.nav-toggle {
-  display: none; background: none; border: 0; color: #fff;
-  font-size: 1.6rem; cursor: pointer;
-}
-
-/* ===== Layout helpers ===== */
-.container { max-width: 1100px; margin: auto; padding: 2rem 1rem; }
-.section-title {
-  font-size: 1.8rem; color: var(--primary);
-  margin-bottom: 1.5rem; border-left: 5px solid var(--accent);
-  padding-left: .75rem;
-}
-.fade-in { opacity: 0; transform: translateY(20px); transition: all .6s ease; }
-.fade-in.visible { opacity: 1; transform: none; }
-
-/* ===== Hero (homepage) ===== */
-.hero {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 2rem; align-items: center; padding: 3rem 1rem;
-  max-width: 1100px; margin: auto;
-}
-.hero img {
-  width: 260px; height: 260px; object-fit: cover;
-  border-radius: 50%; border: 6px solid var(--accent);
-  margin: auto; animation: pop .8s ease;
-}
-@keyframes pop { from { transform: scale(.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-.hero h1 { font-size: 2.4rem; color: var(--primary); }
-.hero .welcome { color: var(--accent); font-weight: 600; margin: .5rem 0; }
-
-/* ===== Cards / grid ===== */
-.grid {
-  display: grid; gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-}
-.card {
-  background: var(--card); border-radius: var(--radius);
-  padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,.08);
-  transition: transform .3s, box-shadow .3s;
-}
-.card:hover { transform: translateY(-6px); box-shadow: 0 10px 24px rgba(0,0,0,.12); }
-.card h3 { color: var(--primary); margin-bottom: .5rem; }
-.card img { border-radius: 8px; margin-bottom: .75rem; aspect-ratio: 16/10; object-fit: cover; }
-
-/* ===== Tables ===== */
-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: var(--radius); overflow: hidden; }
-th, td { padding: .8rem 1rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
-th { background: var(--primary); color: #fff; }
-tr:hover td { background: #f1f5f9; }
-
-/* ===== Planner ===== */
-.planner-form { display: flex; gap: .75rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
-.planner-form input, .planner-form select {
-  padding: .7rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 1rem; flex: 1; min-width: 160px;
-}
-.btn {
-  background: var(--primary); color: #fff; border: 0;
-  padding: .7rem 1.3rem; border-radius: 8px; cursor: pointer;
-  font-size: 1rem; transition: background .3s, transform .15s;
-}
-.btn:hover { background: #16296b; transform: scale(1.03); }
-.btn-accent { background: var(--accent); color: #1f2937; }
-.btn-danger { background: #dc2626; }
-.task-list { list-style: none; display: grid; gap: .75rem; }
-.task-item {
-  background: #fff; padding: 1rem; border-radius: 8px;
-  display: flex; align-items: center; gap: 1rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,.07); animation: slideIn .3s ease;
-}
-@keyframes slideIn { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: none; } }
-.task-item.completed .task-text { text-decoration: line-through; color: #94a3b8; }
-.task-text { flex: 1; }
-.task-meta { font-size: .8rem; color: #64748b; }
-.badge {
-  font-size: .75rem; padding: .15rem .6rem; border-radius: 99px;
-  background: #e0e7ff; color: var(--primary); font-weight: 600;
-}
-.empty-msg { color: #64748b; font-style: italic; }
-
-/* ===== Contact form ===== */
-form.contact { display: grid; gap: 1rem; max-width: 560px; }
-.field { display: grid; gap: .3rem; }
-.field label { font-weight: 600; }
-.field input, .field textarea {
-  padding: .75rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 1rem; font-family: inherit;
-}
-.field input:focus, .field textarea:focus { outline: 2px solid var(--accent); border-color: transparent; }
-.error { color: #dc2626; font-size: .85rem; min-height: 1.1em; }
-.success-msg { color: #16a34a; font-weight: 600; }
-
-/* ===== Footer ===== */
+/* ================= 9. FOOTER ================= */
 footer {
-  background: var(--primary); color: #c7d2fe;
+  background: var(--blue); color: #c7d2fe;
   text-align: center; padding: 1.5rem; margin-top: 3rem;
 }
 
-/* ===== Responsive ===== */
-/* ================= MOBILE NAVIGATION FIX ================= */
+/* ================= 10. MOBILE RESPONSIVE (Phones & Tablets) ================= */
 @media (max-width: 768px) {
-  
-  /* 1. Anchor the navbar so the dropdown sits right below it */
   .navbar {
-    position: relative;
     flex-wrap: wrap;
+    position: relative;
   }
 
-  /* 2. Show the hamburger button */
   .menu-btn {
     display: block;
   }
 
-  /* 3. Hide the menu by default */
+  /* Hide menu by default on mobile */
   .nav-links {
     display: none; 
     flex-direction: column;
     width: 100%;
-    background-color: #1e3a8a; /* Hardcoded blue so it doesn't fail */
+    background-color: var(--blue);
     position: absolute;
-    top: 100%; /* Drops it exactly below the blue header */
+    top: 100%;
     left: 0;
     padding: 20px 0;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
     gap: 15px;
-    z-index: 999; /* Keeps it on top of the photo */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    z-index: 999;
   }
 
-  /* 4. Show the menu when JavaScript adds the "show" class */
+  /* Show menu when JS adds the .show class */
   .nav-links.show {
     display: flex;
   }
 
-  /* 5. Force the links to be white so they don't disappear */
   .nav-links a {
-    color: #ffffff; 
+    color: var(--white);
     display: block;
     padding: 10px;
     font-size: 18px;
   }
 
-  /* 6. Stack the hero image and text */
   .hero {
     flex-direction: column;
     text-align: center;
   }
-}
-/* ================= 9. MOBILE NAVIGATION FIX ================= */
-  .nav-links {
-    display: none; /* Hidden by default */
-    flex-direction: column;
-    width: 100%;
-    background-color: var(--blue);
-    position: absolute; /* Drops down like a proper mobile menu */
-    top: 60px; /* Sits right below the header */
-    left: 0;
-    padding: 20px 0;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    gap: 15px;
-  }
-
-  /* This class is added by JavaScript when you click the ☰ button */
-  .nav-links.show { 
-    display: flex; 
-  }
-
-  /* Make the hero section stack instead of being side-by-side */
-  .hero { 
-    flex-direction: column; 
-    text-align: center; 
-  }
   
-  .hero h1 { 
-    font-size: 26px; 
+  .hero h1 {
+    font-size: 26px;
   }
 }
